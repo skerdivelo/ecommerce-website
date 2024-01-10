@@ -46,6 +46,6 @@
     <span class="font-semibold text-2xl block mb-6 text-fw-red">
       {product.dicount}
     </span>
-    <Button variant={ButtonVariant.PRIMARY} dClass="w-full">Add to cart</Button>
+    <Button variant={ButtonVariant.PRIMARY} dClass="w-full">Aggiungi al carrello</Button>
   </div>
 </div>

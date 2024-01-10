@@ -26,4 +26,22 @@ export const products = [
     image:
       "https://images.unsplash.com/photo-1591370264374-9a5aef8df17a?auto=format&fit=crop&q=80&w=3087&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
+  {
+    name: "iPhone 15",
+    category: "Phones",
+    dicount: "$1099",
+    price: "$1299",
+    rating: 4.6,
+    image:
+      "https://images.unsplash.com/photo-1695048064926-4da0dd8259d1?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  },
+  {
+    name: "Samsung QLED TV",
+    category: "TVs",
+    dicount: "$1,299",
+    price: "$1,499",
+    rating: 4.5,
+    image:
+      "https://images.unsplash.com/photo-1602522660406-8cc77767d783?auto=format&fit=crop&q=80&w=2738&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  },
 ];
