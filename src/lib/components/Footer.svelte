@@ -9,7 +9,7 @@
   <div class="flex flex-col justify-between">
     <WhiteLogo />
     <span class="text-fw-darkgrey hidden sm:block">
-      © Copyright FullStackWiz. All rights reserved
+      © Copyright SkAnd. All rights reserved
     </span>
   </div>
   {#each footerSections as section}
@@ -25,6 +25,6 @@
     </div>
   {/each}
   <span class="text-fw-darkgrey block sm:hidden">
-    © Copyright FullStackWiz. All rights reserved
+    © Copyright SkAnd. All rights reserved
   </span>
 </div>
