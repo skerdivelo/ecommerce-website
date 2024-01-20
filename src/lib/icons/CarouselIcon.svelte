@@ -1,6 +1,6 @@
 <svg
-  width="36"
-  height="36"
+  width="72"
+  height="72"
   viewBox="0 0 36 36"
   fill="none"
   xmlns="http://www.w3.org/2000/svg"
@@ -13,12 +13,12 @@
       height="24"
       rx="12"
       transform="rotate(-180 30 29)"
-      fill="white"
+      fill="#11283D"
     />
   </g>
   <path
     d="M15.8574 22L15.8574 16.8576L15.8574 11.7153L20.9998 16.8576L15.8574 22Z"
-    fill="#11283D"
+    fill="white"
   />
   <defs>
     <filter
