@@ -15,7 +15,7 @@
     <span
       class="text-white absolute px-5 right-0 text-center lg:left-1/2 bottom-5 lg:top-12 lg:bottom-auto lg:-translate-x-1/2"
     >
-      Kickoff New Year with 15% Discount on Laptops
+      Inizia il nuovo anno con uno sconto del 15% sui laptop
     </span>
     <Button
       dClass="hidden lg:block absolute bottom-5 left-1/2 -translate-x-1/2 border-white text-white w-1/3"
@@ -34,7 +34,7 @@
         alt="Smart Watch Collections"
       />
       <span class="text-white absolute px-5 left-0 bottom-5">
-        Smart Watch Collections
+        Collezione Smart Watch
       </span>
     </div>
     <div
@@ -46,7 +46,7 @@
         alt="Headphones"
       />
       <span class="text-white absolute px-5 right-0 bottom-5">
-        High Quality Headphones
+        Cuffie di alta qualità
       </span>
     </div>
     <div
@@ -57,7 +57,7 @@
         src="https://images.unsplash.com/photo-1615869442320-fd02a129c77c?auto=format&fit=crop&q=80&w=3134&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
         alt="Large Selection of Keyboards"
       />
-      <span class="text-white absolute px-5 left-0 bottom-5">Keyboards</span>
+      <span class="text-white absolute px-5 left-0 bottom-5">Tastiere</span>
     </div>
   </div>
 </div>

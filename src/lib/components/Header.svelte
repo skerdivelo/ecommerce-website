@@ -10,7 +10,7 @@
 
   const headerLinks: HeaderLink[] = [
     { name: "Home", link: "/home", icon: HomeIcon },
-    { name: "Products", icon: ProductIcon, popover: ProductsPopover },
+    { name: "Prodotti", icon: ProductIcon, popover: ProductsPopover },
   ];
 
   let isMenuOpened = false;

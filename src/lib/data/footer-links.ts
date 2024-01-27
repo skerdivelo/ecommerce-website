@@ -2,14 +2,14 @@ import type { FooterSection } from "../../types/Footer";
 
 export const footerSections: FooterSection[] = [
   {
-    title: "Products",
+    title: "Prodotti",
     links: [
       {
-        name: "Computers",
+        name: "Computer",
         link: "/computers",
       },
       {
-        name: "Audio & Headphones",
+        name: "Audio e Cuffie",
         link: "/audio-and-headphones",
       },
       {
@@ -17,41 +17,41 @@ export const footerSections: FooterSection[] = [
         link: "/tv",
       },
       {
-        name: "Home Appliances",
+        name: "Elettrodomestici",
         link: "/home-appliances",
       },
       {
-        name: "Sport & Travel",
+        name: "Sport e Viaggi",
         link: "/sport-and-travel",
       },
     ],
   },
   {
-    title: "Discounts",
+    title: "Sconti",
     links: [
       {
-        name: "Autumn Sale",
+        name: "Saldi Autunnali",
         link: "/autumn-sale",
       },
       {
-        name: "Register and get 15% off",
+        name: "Registrati e ottieni il 15% di sconto",
         link: "/registration-bonus",
       },
     ],
   },
   {
-    title: "About",
+    title: "Informazioni",
     links: [
       {
-        name: "FAQ",
+        name: "Domande frequenti",
         link: "/faq",
       },
       {
-        name: "Shipment",
+        name: "Spedizione",
         link: "/shipment",
       },
       {
-        name: "Terms & Conditions",
+        name: "Termini e Condizioni",
         link: "/terms-and-conditions",
       },
       {
