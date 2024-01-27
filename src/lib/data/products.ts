@@ -9,7 +9,7 @@ export const products = [
     },
     {
         name: "Watch SE",
-        category: "Watches",
+        category: "Orologi",
         dicount: "$199",
         price: "$229",
         rating: 4.8,
@@ -17,7 +17,7 @@ export const products = [
     },
     {
         name: "AirPods",
-        category: "Headphones",
+        category: "Cuffie",
         dicount: "$299",
         price: "$329",
         rating: 4.9,
@@ -25,7 +25,7 @@ export const products = [
     },
     {
         name: "iPhone 15",
-        category: "Phones",
+        category: "Telefoni",
         dicount: "$1099",
         price: "$1299",
         rating: 4.6,
