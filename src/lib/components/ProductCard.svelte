@@ -4,7 +4,7 @@
   import { ButtonVariant } from "../../types/Button";
   import type { Product } from "../../types/Product";
   import Button from "./Button.svelte";
-  import { fade } from 'svelte/transition';
+  import { shoppingBag } from '$lib/stores/shoppingBag';
 
   export let product: Product;
 
@@ -15,8 +15,12 @@
     inCart.update(value => {
       if (value) {
         console.log(`Removing ${product.name} from cart`);
+        // Remove the product from the shopping bag
+        shoppingBag.update(bag => bag.filter(p => p.name !== product.name));
       } else {
         console.log(`Adding ${product.name} to cart`);
+        // Add the product to the shopping bag
+        shoppingBag.update(bag => [...bag, product]);
       }
       return !value; // Toggle the inCart state
     });
