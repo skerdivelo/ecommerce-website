@@ -1,37 +1,54 @@
 <script lang="ts">
+  import { writable } from 'svelte/store';
   import StarIcon from "$lib/icons/StarIcon.svelte";
   import { ButtonVariant } from "../../types/Button";
   import type { Product } from "../../types/Product";
   import Button from "./Button.svelte";
+  import { fade } from 'svelte/transition';
 
   export let product: Product;
+
+  // Reactive variable to track if the product is in the cart
+  let inCart = writable(false);
+
+  const toggleCart = (product: Product) => {
+    inCart.update(value => {
+      if (value) {
+        console.log(`Removing ${product.name} from cart`);
+      } else {
+        console.log(`Adding ${product.name} to cart`);
+      }
+      return !value; // Toggle the inCart state
+    });
+  };
 </script>
 
-<div
-  class="h-full p-8 pb-10 flex flex-col shadow-sm bg-white rounded-lg justify-between"
->
+<div class="h-full p-8 pb-10 flex flex-col shadow-sm bg-white rounded-lg justify-between">
   <div>
     <div class="w-full aspect-square rounded-xl mb-7 overflow-hidden">
-      <img
-        class="w-full h-full object-cover scale-image cursor-pointer"
-        src={product.image}
-        alt="Product"
-      />
+      <img class="w-full h-full object-cover scale-image cursor-pointer" src={product.image} alt="Product" />
     </div>
 
-    <button
-      class="w-min whitespace-nowrap font-bold text-fw-blue text-xl mb-6 block"
-    >
+    <button class="w-min whitespace-nowrap font-bold text-fw-blue text-xl mb-6 block">
       {product.name}
     </button>
   </div>
 
+<style>
+  .red-text{
+      color: white;
+  }
+
+  .button-red{
+      background-color: red;
+  }
+</style>
+
   <div>
-    <button
-      class="w-min whitespace-nowrap font-light text-fw-darkgrey mb-3 block"
-    >
+    <button class="w-min whitespace-nowrap font-light text-fw-darkgrey mb-3 block">
       {product.category}
     </button>
+    
     <div class="flex items-center justify-between">
       <span class="font-light text-fw-darkgrey text-sm line-through">
         {product.price}
@@ -43,9 +60,16 @@
         </span>
       </div>
     </div>
+
     <span class="font-semibold text-2xl block mb-6 text-fw-red">
       {product.dicount}
     </span>
-    <Button variant={ButtonVariant.PRIMARY} dClass="w-full">Aggiungi al carrello</Button>
+
+    <!-- Button that changes based on the inCart state -->
+    {#if $inCart}
+      <Button variant={ButtonVariant.PRIMARY} dClass="w-full red-text button-red" onClick={() => toggleCart(product)}>Rimuovi dal Carrello</Button>
+    {:else}
+      <Button variant={ButtonVariant.PRIMARY} dClass="w-full" onClick={() => toggleCart(product)}>Aggiungi al Carrello</Button>
+    {/if}
   </div>
 </div>

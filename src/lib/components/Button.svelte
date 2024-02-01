@@ -8,7 +8,7 @@
 
 <button
   class={`flex gap-1 items-center justify-center rounded-lg py-3
-   text-sm font-sans normal-case font-medium transition-colors duration-500 ease-in-out hover:bg-black hover:text-white ${dClass} ${
+  text-sm font-sans normal-case font-medium transition-colors duration-500 ease-in-out hover:bg-black hover:text-white ${dClass} ${
     variant === ButtonVariant.PRIMARY
       ? "bg-fw-blue text-white"
       : "border border-fw-blue text-fw-blue"
