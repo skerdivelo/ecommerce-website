@@ -12,19 +12,22 @@
   let inCart = writable(false);
 
   const toggleCart = (product: Product) => {
-    inCart.update(value => {
-      if (value) {
-        console.log(`Removing ${product.name} from cart`);
-        // Remove the product from the shopping bag
-        shoppingBag.update(bag => bag.filter(p => p.name !== product.name));
-      } else {
-        console.log(`Adding ${product.name} to cart`);
-        // Add the product to the shopping bag
-        shoppingBag.update(bag => [...bag, product]);
-      }
-      return !value; // Toggle the inCart state
-    });
-  };
+      inCart.update(value => {
+        if (value) {
+          console.log(`Removing ${product.name} from cart`);
+          // Remove the product from the shopping bag
+          shoppingBag.update(bag => bag.filter(p => p.name !== product.name));
+        } else {
+          console.log(`Adding ${product.name} to cart`);
+          // Add the product to the shopping bag
+          // Set the quantity to 1 and convert the price to a number
+          //@ts-ignore
+          const price = parseFloat(product.price.replace(/[$,]/g, ''));
+          shoppingBag.update(bag => [...bag, {...product, quantity: 1, price}]);
+        }
+        return !value; // Toggle the inCart state
+      });
+    };
 </script>
 
 <div class="h-full p-8 pb-10 flex flex-col shadow-sm bg-white rounded-lg justify-between">

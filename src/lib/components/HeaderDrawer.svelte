@@ -15,7 +15,7 @@
     if (!headerLinks?.some((link) => link.name === "Cart")) {
       headerLinks = [
         ...headerLinks,
-        { name: "Carrello", link: "/cart", icon: ShoppingBagIcon },
+        { name: "Carrello", link: "/shopping-bag", icon: ShoppingBagIcon },
       ];
     }
   });
