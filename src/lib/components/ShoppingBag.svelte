@@ -24,8 +24,16 @@
     function decreaseQuantity(product: Product) {
         shoppingBag.update(bag => {
             const productIndex = bag.findIndex(p => p.name === product.name);
-            if (productIndex !== -1 && bag[productIndex].quantity > 1) {
-                bag[productIndex].quantity--;
+            if (productIndex !== -1) {
+                if (bag[productIndex].quantity > 1) {
+                    bag[productIndex].quantity--;
+                } else {
+                    //@ts-ignore
+                    bag[productIndex].removed = true;
+                    setTimeout(() => {
+                        bag.splice(productIndex, 1);
+                    }, 2000); // Remove the product after 2 seconds
+                }
             }
             return [...bag];
         });
@@ -129,11 +137,20 @@
         text-align: right;
         margin-top: 20px;
     }
+
+    .product.removed {
+        animation: smoke 2s forwards;
+    }
+
+    @keyframes smoke {
+        0% { opacity: 1; }
+        100% { opacity: 0; transform: translateY(-20px); }
+    }
 </style>
 
 <div>
-    {#each products as product (product.name)}
-        <div class="product">
+    {#each $shoppingBag as product (product.name)}
+    <div class="product {product.removed ? 'removed' : ''}">
             <img src={product.image} alt={product.name} />
             <div class="product-details">
                 <h2>{product.name}</h2>
