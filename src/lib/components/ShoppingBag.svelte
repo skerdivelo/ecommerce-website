@@ -1,6 +1,7 @@
 <script lang="ts">
     import { shoppingBag } from "$lib/stores/shoppingBag";
     import type { Product } from '../../types/Product';
+    import cart from "$lib/images/cart.png";
 
     let products: Product[] = [];
 
@@ -20,6 +21,17 @@
         });
     }
 
+    // Function to remove a product
+    function removeProduct(product: Product) {
+        shoppingBag.update(bag => {
+            const productIndex = bag.findIndex(p => p.name === product.name);
+            if (productIndex !== -1) {
+                bag.splice(productIndex, 1);
+            }
+            return [...bag];
+        });
+    }
+
     // Function to decrease the quantity of a product
     function decreaseQuantity(product: Product) {
         shoppingBag.update(bag => {
@@ -31,7 +43,7 @@
                     //@ts-ignore
                     bag[productIndex].removed = true;
                     setTimeout(() => {
-                        bag.splice(productIndex, 1);
+                        removeProduct(product);
                     }, 2000); // Remove the product after 2 seconds
                 }
             }
@@ -138,31 +150,59 @@
         margin-top: 20px;
     }
 
+    .empty-bag {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 80vh; /* Adjust as needed */
+        text-align: center;
+    }
+
+    .empty-bag img {
+        width: 120px;
+        height: 120px;
+        object-fit: cover;
+        margin-bottom: 20px;
+    }
+
+    .empty-bag p {
+        font-size: 24px;
+        color: #666;
+    }
+
     .product.removed {
-        animation: smoke 2s forwards;
+        animation: smoke 0.6s ease forwards;
     }
 
     @keyframes smoke {
         0% { opacity: 1; }
-        100% { opacity: 0; transform: translateY(-20px); }
+        100% { opacity: 0; transform: translateY(-10px); }
     }
 </style>
 
 <div>
-    {#each $shoppingBag as product (product.name)}
-    <div class="product {product.removed ? 'removed' : ''}">
-            <img src={product.image} alt={product.name} />
-            <div class="product-details">
-                <h2>{product.name}</h2>
-                <p>Price: ${product.price}</p>
-                <div class="button-group">
-                    <button class="increase-button" on:click={() => increaseQuantity(product)}>+</button>
-                    <span class="quantity">{product.quantity}</span>
-                    <button class="decrease-button" on:click={() => decreaseQuantity(product)}>-</button>
+    {#if $shoppingBag.length === 0}
+        <div class="empty-bag">
+            <img src={cart} alt="Empty bag" />
+            <p>Your shopping bag is empty.</p>
+        </div>
+    {:else}
+        {#each $shoppingBag as product (product.name)}
+            <div class="product {product.removed ? 'removed' : ''}">
+                <img src={product.image} alt={product.name} />
+                <div class="product-details">
+                    <h2>{product.name}</h2>
+                    <p>Price: ${product.price}</p>
+                    <div class="button-group">
+                        <button class="increase-button" on:click={() => increaseQuantity(product)}>+</button>
+                        <span class="quantity">{product.quantity}</span>
+                        <button class="decrease-button" on:click={() => decreaseQuantity(product)}>-</button>
+                    </div>
                 </div>
             </div>
-        </div>
-    {/each}
+        {/each}
 
-    <p class="total-price">Total Price: ${totalPrice}</p>
+        <p class="total-price">Total Price: ${totalPrice}</p>
+    {/if}
 </div>
