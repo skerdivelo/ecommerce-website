@@ -12,31 +12,31 @@
   let inCart = writable(false);
 
   const toggleCart = (product: Product) => {
-    inCart.update(value => {
-      if (value) {
-        console.log(`Removing ${product.id} from cart`);
-        // Remove the product from the shopping bag
-        shoppingBag.update(bag => bag.filter(p => p.id !== product.id));
-      } else {
-        console.log(`Adding ${product.id} to cart`);
-        // Check if the product already exists in the shopping bag
-        shoppingBag.update(bag => {
-          const existingProduct = bag.find(p => p.id === product.id);
-          if (existingProduct) {
-            // If the product exists, increase the quantity
-            existingProduct.quantity += 1;
-          } else {
-            // If the product doesn't exist, add it to the shopping bag
-            //@ts-ignore
-            const price = parseFloat(product.price.replace(/[$,]/g, ''));
-            bag.push({...product, quantity: 1, price});
-          }
-          return bag;
-        });
-      }
-      return !value; // Toggle the inCart state
-    });
-  };
+  inCart.update(value => {
+    if (value) {
+      console.log(`Removing ${product.id} from cart`);
+      // Remove the product from the shopping bag
+      shoppingBag.update(bag => bag.filter(p => p.id !== product.id));
+    } else {
+      console.log(`Adding ${product.id} to cart`);
+      // Check if the product already exists in the shopping bag
+      shoppingBag.update(bag => {
+        const existingProduct = bag.find(p => p.id === product.id);
+        if (existingProduct) {
+          // If the product exists, increase the quantity
+          existingProduct.quantity += 1;
+        } else {
+          // If the product doesn't exist, add it to the shopping bag
+          //@ts-ignore
+          const price = parseFloat(product.price.replace(/[$,]/g, ''));
+          bag.push({...product, quantity: 1, price});
+        }
+        return bag;
+      });
+    }
+    return !value; // Toggle the inCart state
+  });
+};
 </script>
 
 <div class="h-full p-8 pb-10 flex flex-col shadow-sm bg-white rounded-lg justify-between">
