@@ -1,4 +1,6 @@
 export type Product = {
+  id: number;
+  removed: boolean;
   name: string;
   category: string;
   dicount: string;

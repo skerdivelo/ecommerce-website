@@ -1,5 +1,6 @@
 export const products = [
     {
+        id: 1,
         name: "Macbook Pro",
         category: "Laptops",
         dicount: "$1,899",
@@ -8,6 +9,7 @@ export const products = [
         image: "https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?auto=format&fit=crop&q=80&w=2970&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     },
     {
+        id: 2,
         name: "Watch SE",
         category: "Orologi",
         dicount: "$199",
@@ -16,6 +18,7 @@ export const products = [
         image: "https://images.unsplash.com/photo-1624096104992-9b4fa3a279dd?auto=format&fit=crop&q=80&w=2638&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     },
     {
+        id: 3,
         name: "AirPods",
         category: "Cuffie",
         dicount: "$299",
@@ -24,6 +27,7 @@ export const products = [
         image: "https://images.unsplash.com/photo-1591370264374-9a5aef8df17a?auto=format&fit=crop&q=80&w=3087&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     },
     {
+        id: 4,
         name: "iPhone 15",
         category: "Telefoni",
         dicount: "$1099",
@@ -32,6 +36,7 @@ export const products = [
         image: "https://images.unsplash.com/photo-1695048064926-4da0dd8259d1?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     },
     {
+        id: 5,
         name: "iMac",
         category: "Computer",
         dicount: "$1,299",

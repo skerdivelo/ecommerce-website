@@ -13,7 +13,7 @@
     // Function to increase the quantity of a product
     function increaseQuantity(product: Product) {
         shoppingBag.update(bag => {
-            const productIndex = bag.findIndex(p => p.name === product.name);
+            const productIndex = bag.findIndex(p => p.id === product.id);
             if (productIndex !== -1) {
                 bag[productIndex].quantity++;
             }
@@ -24,7 +24,7 @@
     // Function to remove a product
     function removeProduct(product: Product) {
         shoppingBag.update(bag => {
-            const productIndex = bag.findIndex(p => p.name === product.name);
+            const productIndex = bag.findIndex(p => p.id === product.id);
             if (productIndex !== -1) {
                 bag.splice(productIndex, 1);
             }
@@ -35,7 +35,7 @@
     // Function to decrease the quantity of a product
     function decreaseQuantity(product: Product) {
         shoppingBag.update(bag => {
-            const productIndex = bag.findIndex(p => p.name === product.name);
+            const productIndex = bag.findIndex(p => p.id === product.id);
             if (productIndex !== -1) {
                 if (bag[productIndex].quantity > 1) {
                     bag[productIndex].quantity--;
@@ -188,7 +188,7 @@
             <p>Your shopping bag is empty.</p>
         </div>
     {:else}
-        {#each $shoppingBag as product (product.name)}
+        {#each $shoppingBag as product (product.id)}
             <div class="product {product.removed ? 'removed' : ''}">
                 <img src={product.image} alt={product.name} />
                 <div class="product-details">
