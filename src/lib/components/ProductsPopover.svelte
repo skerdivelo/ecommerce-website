@@ -1,8 +1,10 @@
 <script lang="ts">
   import { Popover } from "flowbite-svelte";
   import { shoppingBag } from "$lib/stores/shoppingBag";
-  import ShoppingBag from "./ShoppingBag.svelte";
   import cart from '../images/cart.png';
+  import Button from "./Button.svelte";
+  import { ButtonVariant } from "../../types/Button";
+  import { goto } from "$app/navigation";
 
   export let triggeredBy: string;
 </script>
@@ -24,7 +26,10 @@
           <!-- Add more product details as needed -->
         </div>
       </div>
-    {/each}    
+    {/each}
+    <Button variant={ButtonVariant.PRIMARY} dClass="w-full" onClick={() => goto('/shopping-bag')}>
+      Carello
+    </Button>
     </Popover>
   {/if}
 
