@@ -3,6 +3,11 @@
   import Button from "./Button.svelte";
   import ArrowIcon from "$lib/icons/ArrowIcon.svelte";
   import laptopImage from "$lib/images/laptop.png";
+
+  const scrollToProducts = () => {
+    const productsSection = document.getElementById('product-card');
+    productsSection?.scrollIntoView({ behavior: 'smooth' });
+  };
 </script>
 
 <h1
@@ -29,7 +34,7 @@
           Scopri la nostra selezione curata di laptop all'avanguardia progettati per
           potenziare il tuo viaggio digitale.
         </span>
-        <Button variant={ButtonVariant.SECONDARY} dClass="w-full">
+        <Button variant={ButtonVariant.SECONDARY} dClass="w-full" onClick={scrollToProducts}>
           Esplora Laptop
           <ArrowIcon />
         </Button>
@@ -44,7 +49,7 @@
     Scopri la nostra selezione curata di laptop all'avanguardia progettati per potenziare
     il tuo viaggio digitale.
   </span>
-  <Button variant={ButtonVariant.SECONDARY} dClass="w-full">
+  <Button variant={ButtonVariant.SECONDARY} dClass="w-full" onClick={scrollToProducts}>
     Esplora Laptop
     <ArrowIcon />
   </Button>

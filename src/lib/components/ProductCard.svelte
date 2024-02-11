@@ -39,7 +39,7 @@
 };
 </script>
 
-<div class="h-full p-8 pb-10 flex flex-col shadow-sm bg-white rounded-lg justify-between">
+<div id="product-card" class="h-full p-8 pb-10 flex flex-col shadow-sm bg-white rounded-lg justify-between">
   <div>
     <div class="w-full aspect-square rounded-xl mb-7 overflow-hidden">
       <img class="w-full h-full object-cover scale-image cursor-pointer" src={product.image} alt="Product" />
