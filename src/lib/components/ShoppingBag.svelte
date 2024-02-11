@@ -2,8 +2,10 @@
     import { shoppingBag } from "$lib/stores/shoppingBag";
     import type { Product } from '../../types/Product';
     import cart from "$lib/images/cart.png";
+    import Spinner from "./Spinner.svelte";
 
     let products: Product[] = [];
+    let loading = false;
 
     // Subscribe to the shoppingBag store
     shoppingBag.subscribe(value => {
@@ -49,6 +51,17 @@
             }
             return [...bag];
         });
+    }
+
+    function compraTutto() {
+        loading = true;
+        setTimeout(() => {
+            shoppingBag.update(bag => {
+                bag = [];
+                return bag;
+            });
+            loading = false;
+        }, 2000);
     }
 
     // Compute the total price
@@ -175,6 +188,39 @@
         animation: smoke 0.6s ease forwards;
     }
 
+    .acquista-tutto-button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 40px;
+        width: 120px;
+        background-color: #28a745;
+        color: #fff;
+        border: none;
+        border-radius: 20px;
+        font-weight: bold;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        margin-top: 20px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 40px;
+    }
+
+    .acquista-tutto-button:hover {
+        background-color: #218838;
+    }
+
+    .spinner-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 40px;
+        margin-top: 20px;
+        margin-bottom: 40px;
+    }
+
     @keyframes smoke {
         0% { opacity: 1; }
         100% { opacity: 0; transform: translateY(-10px); }
@@ -185,7 +231,7 @@
     {#if $shoppingBag.length === 0}
         <div class="empty-bag">
             <img src={cart} alt="Empty bag" />
-            <p>Your shopping bag is empty.</p>
+            <p>Il Carello è vuoto.</p>
         </div>
     {:else}
         {#each $shoppingBag as product (product.id)}
@@ -204,5 +250,13 @@
         {/each}
 
         <p class="total-price">Total Price: ${totalPrice}</p>
+
+        {#if loading}
+            <div class="spinner-container">
+                <Spinner />
+            </div>
+        {:else}
+            <button class="acquista-tutto-button" on:click={compraTutto}>Compra tutto</button>
+        {/if}
     {/if}
 </div>

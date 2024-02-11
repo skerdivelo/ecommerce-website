@@ -12,7 +12,7 @@
   {#if $shoppingBag.length === 0}
     <Popover class="bg-white px-20 py-{$shoppingBag.length * 350}" {triggeredBy}>
       <img src={cart} alt="Cart" class="w-20 h-20 mx-auto mb-6" />
-      <p>Your shopping bag is empty</p>
+      <p>Il Carello è vuoto</p>
     </Popover>
   {:else}
     <Popover class="bg-white px-20 py-{$shoppingBag.length * 350}" {triggeredBy} style="position: relative; z-index: 9999;">
