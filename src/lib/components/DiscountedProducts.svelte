@@ -9,7 +9,7 @@
   class="mt-[10vw]"
   hasTrack={false}
   options={{
-    type: "loop",
+    type: "slide",
     gap: 30,
     perPage: 4,
     perMove: 1,
