@@ -5,6 +5,7 @@
   import type { Product } from "../../types/Product";
   import Button from "./Button.svelte";
   import { shoppingBag } from '$lib/stores/shoppingBag';
+  import { onMount } from 'svelte';
 
   export let product: Product;
 
@@ -37,6 +38,18 @@
     return !value; // Toggle the inCart state
   });
 };
+
+  // Check if the product is in the shopping bag on mount
+  onMount(() => {
+    shoppingBag.subscribe(bag => {
+      const existingProduct = bag.find(p => p.id === product.id);
+      if (existingProduct) {
+        inCart.set(true);
+      } else {
+        inCart.set(false);
+      }
+    });
+  });
 </script>
 
 <div id="product-card" class="h-full p-8 pb-10 flex flex-col shadow-sm bg-white rounded-lg justify-between">
