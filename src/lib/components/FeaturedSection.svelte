@@ -7,6 +7,10 @@
 <div class="mt-16 flex flex-col gap-5 h-auto lg:h-[70vh] lg:flex-row">
   <div
     class="w-full lg:w-2/3 rounded-lg h-48 lg:h-full overflow-hidden cursor-pointer relative"
+    on:click={() => goto('/sconti')}
+    on:keydown={() => {}}
+    role="button"
+    tabindex="0"
   >
     <img
       class="scale-image object-cover h-full w-full"
@@ -16,7 +20,7 @@
     <span
       class="text-white absolute px-5 right-0 text-center lg:left-1/2 bottom-5 lg:top-12 lg:bottom-auto lg:-translate-x-1/2"
     >
-      Inizia il nuovo anno con uno sconto del 15% sui laptop
+      Inizia il nuovo anno con sconti fino alle stelle
     </span>
     <Button
       dClass="hidden lg:block absolute bottom-5 left-1/2 -translate-x-1/2 border-white text-white w-1/3"
@@ -60,6 +64,10 @@
     </div>
     <div
       class="w-full rounded-lg h-48 lg:h-full overflow-hidden relative cursor-pointer"
+      on:click={() => goto('/tastiere')}
+      on:keydown={() => {}}
+      role="button"
+      tabindex="0"
     >
       <img
         class="scale-image object-cover h-full w-full"
