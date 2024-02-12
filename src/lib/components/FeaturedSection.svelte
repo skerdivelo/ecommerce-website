@@ -21,7 +21,7 @@
       dClass="hidden lg:block absolute bottom-5 left-1/2 -translate-x-1/2 border-white text-white w-1/3"
       variant={ButtonVariant.SECONDARY}
     >
-      View Offer
+      Vedi Sconti
     </Button>
   </div>
   <div class="flex flex-col gap-5 w-full lg:w-1/3 lg:h-full">
