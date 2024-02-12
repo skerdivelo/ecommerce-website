@@ -1,6 +1,6 @@
 <script lang="ts">
     import { products } from "$lib/data/products";
-    let watches = products.filter(product => product.category === "Orologi");
+    let cuffie = products.filter(product => product.category === "Cuffie");
 </script>
 
 <style>
@@ -35,7 +35,7 @@
     }
 
     .product-card img {
-        width: auto;
+        max-width: auto;
         height: 60%;
         transition: transform 0.3s ease;
         margin-bottom: 2rem;
@@ -82,13 +82,13 @@
 </style>
 
 <div class="products-grid">
-    {#each watches as watch (watch.id)}
+    {#each cuffie as cuffia (cuffia.id)}
         <div class="product-card">
-            <img src={watch.image} alt={watch.name} />
-            <h2>{watch.name}</h2>
-            <p>Sconto: {watch.dicount}</p> <!-- Corrected typo 'dicount' to 'discount' -->
-            <p class="font-light text-fw-darkgrey text-sm line-through">Prezzo: {watch.price}</p>
-            <p>Valutazione: <span style="color: orange; font-weight: bold; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">{watch.rating}</span></p> <!-- Makes the watch.rating yellow with shadow -->
+            <img src={cuffia.image} alt={cuffia.name} />
+            <h2>{cuffia.name}</h2>
+            <p>Sconto: {cuffia.dicount}</p> <!-- Corrected typo 'dicount' to 'discount' -->
+            <p class="font-light text-fw-darkgrey text-sm line-through">Prezzo: {cuffia.price}</p>
+            <p>Valutazione: <span style="color: orange; font-weight: bold; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">{cuffia.rating}</span></p> <!-- Makes the watch.rating yellow with shadow -->
         </div>
     {/each}
 </div>

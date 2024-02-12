@@ -42,8 +42,12 @@
         Collezione Smart Watch
       </span>
     </div>
-      <div
+    <div
       class="w-full rounded-lg h-48 lg:h-full overflow-hidden relative cursor-pointer"
+      on:click={() => goto('/cuffie')}
+      on:keydown={() => {}}
+      role="button"
+      tabindex="0"
     >
       <img
         class="scale-image object-cover h-full w-full"
