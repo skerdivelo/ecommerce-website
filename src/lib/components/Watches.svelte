@@ -75,8 +75,8 @@
         <div class="product-card">
             <img src={watch.image} alt={watch.name} />
             <h2>{watch.name}</h2>
-            <p>Prezzo: {watch.price}</p>
             <p>Sconto: {watch.dicount}</p> <!-- Corrected typo 'dicount' to 'discount' -->
+            <p class="font-light text-fw-darkgrey text-sm line-through">Prezzo: {watch.price}</p>
             <p>Valutazione: <span style="color: orange; font-weight: bold; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">{watch.rating}</span></p> <!-- Makes the watch.rating yellow with shadow -->
         </div>
     {/each}

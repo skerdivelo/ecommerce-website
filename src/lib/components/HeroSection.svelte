@@ -35,7 +35,7 @@
           potenziare il tuo viaggio digitale.
         </span>
         <Button variant={ButtonVariant.SECONDARY} dClass="w-full" onClick={scrollToProducts}>
-          Esplora Laptop
+          Esplora Dispositivi
           <ArrowIcon />
         </Button>
       </div>
@@ -50,7 +50,7 @@
     il tuo viaggio digitale.
   </span>
   <Button variant={ButtonVariant.SECONDARY} dClass="w-full" onClick={scrollToProducts}>
-    Esplora Laptop
+    Esplora Dispositivi
     <ArrowIcon />
   </Button>
 </div>
