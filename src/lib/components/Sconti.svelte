@@ -67,6 +67,23 @@
         font-weight: bold;
     }
 
+    .discount {
+        color: red;
+        animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+        0% {
+            transform: scale(1);
+        }
+        50% {
+            transform: scale(1.2);
+        }
+        100% {
+            transform: scale(1);
+        }
+    }
+
     /* Responsive Styles */
     @media (max-width: 768px) {
         .products-grid {
@@ -86,7 +103,7 @@
         <div class="product-card">
             <img src={product.image} alt={product.name} />
             <h2>{product.name}</h2>
-            <p>Sconto: {product.dicount}</p>
+            <p class="discount">Sconto: {product.dicount}</p>
             <p class="font-light text-fw-darkgrey text-sm line-through">Prezzo: {product.price}</p>
             <p>Valutazione: <span style="color: orange; font-weight: bold; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">{product.rating}</span></p>
         </div>
