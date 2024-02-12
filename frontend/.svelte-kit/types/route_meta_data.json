@@ -1,0 +1,11 @@
+{
+	"/": [
+		"src/routes/+page.server.ts"
+	],
+	"/cuffie": [],
+	"/home": [],
+	"/sconti": [],
+	"/shopping-bag": [],
+	"/tastiere": [],
+	"/watches": []
+}
