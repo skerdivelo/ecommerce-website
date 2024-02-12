@@ -53,4 +53,22 @@ export const products = [
         rating: 4.1,
         image: "https://images.unsplash.com/photo-1553545204-4f7d339aa06a?q=80&w=1993&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     },
+    {
+        id: 7,
+        name: "Apple Watch 6",
+        category: "Orologi",
+        dicount: "$449",
+        price: "$599",
+        rating: 4.4,
+        image: "https://images.unsplash.com/photo-1638095562082-449d8c5a47b4?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    },
+    {
+        id: 8,
+        name: "Galaxy Watch 7",
+        category: "Orologi",
+        dicount: "$749",
+        price: "999",
+        rating: 4.8,
+        image: "https://images.unsplash.com/photo-1680113727062-8a118574b782?q=80&w=1965&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    },
 ];
