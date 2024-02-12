@@ -53,6 +53,7 @@
         });
     }
 
+    let successMessage = "Ordine Effettuato con Successo"; 
     function compraTutto() {
         loading = true;
         setTimeout(() => {
@@ -61,6 +62,7 @@
                 return bag;
             });
             loading = false;
+            alert(successMessage);
         }, 2000);
     }
 
