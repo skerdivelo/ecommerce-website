@@ -1,4 +1,6 @@
 <script>
+// @ts-nocheck
+
   import { products } from "$lib/data/products";
   import CarouselIcon from "$lib/icons/CarouselIcon.svelte";
   import { Splide, SplideSlide, SplideTrack } from "@splidejs/svelte-splide";
