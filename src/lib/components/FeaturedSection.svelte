@@ -1,6 +1,7 @@
 <script>
   import { ButtonVariant } from "../../types/Button";
   import Button from "./Button.svelte";
+  import { goto } from "$app/navigation";
 </script>
 
 <div class="mt-16 flex flex-col gap-5 h-auto lg:h-[70vh] lg:flex-row">
@@ -27,6 +28,10 @@
   <div class="flex flex-col gap-5 w-full lg:w-1/3 lg:h-full">
     <div
       class="w-full rounded-lg h-48 lg:h-full overflow-hidden relative cursor-pointer"
+      on:click={() => goto('/watches')}
+      on:keydown={() => {}}
+      role="button"
+      tabindex="0"
     >
       <img
         class="scale-image object-cover h-full w-full"
@@ -37,7 +42,7 @@
         Collezione Smart Watch
       </span>
     </div>
-    <div
+      <div
       class="w-full rounded-lg h-48 lg:h-full overflow-hidden relative cursor-pointer"
     >
       <img
