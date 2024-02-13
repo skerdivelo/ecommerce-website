@@ -1,5 +1,6 @@
 <script lang="ts">
     import { shoppingBag } from "$lib/stores/shoppingBag";
+    import { goto } from "$app/navigation";
     import type { Product } from '../../types/Product';
     import cart from "$lib/images/cart.png";
     import Spinner from "./Spinner.svelte";
@@ -7,7 +8,6 @@
     let products: Product[] = [];
     let loading = false;
 
-    // Subscribe to the shoppingBag store
     shoppingBag.subscribe(value => {
         products = value;
     });
@@ -53,7 +53,6 @@
         });
     }
 
-    let successMessage = "Ordine Effettuato con Successo"; 
     function compraTutto() {
         loading = true;
         setTimeout(() => {
@@ -62,8 +61,8 @@
                 return bag;
             });
             loading = false;
-            alert(successMessage);
-        }, 2000);
+            goto('/payment');
+        }, 2000); // Show the spinner for 2 seconds before redirecting
     }
 
     // Compute the total price
@@ -258,7 +257,7 @@
                 <Spinner />
             </div>
         {:else}
-            <button class="acquista-tutto-button" on:click={compraTutto}>Compra tutto</button>
+            <button class="acquista-tutto-button" on:click={compraTutto}>Ordina</button>
         {/if}
     {/if}
 </div>
