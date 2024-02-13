@@ -1,4 +1,8 @@
-<script>
+<script lang="ts">
+    import { shoppingBag } from "$lib/stores/shoppingBag";
+    import Spinner from "./Spinner.svelte";
+    import { goto } from "$app/navigation";
+
     let name = '';
     let surname = '';
     let city = '';
@@ -10,11 +14,36 @@
 
     let isFormFilled = false;
 
-    $: isFormFilled = !!name && !!surname && !!city && !!phoneNumber && !!email && !!creditCardNumber && !!expiryDate && !!cvv;
+    $: isFormFilled = !!name && !!surname && !!city && !!phoneNumber && !!email && !!creditCardNumber && !!expiryDate && !!cvv && !expiryDateError;
 
+    let expiryDateError = '';
+
+const validateExpiryDate = () => {
+    const [month, year] = expiryDate.split('/');
+    const currentYear = new Date().getFullYear() % 100; // Get the last two digits of the current year
+    const currentMonth = new Date().getMonth() + 1; // Get the current month (getMonth is zero-based)
+
+    if (Number(month) < 1 || Number(month) > 12) {
+        expiryDateError = 'Il mese deve essere compreso tra 1 e 12.';
+    } else if (Number(year) < Number(currentYear) || (Number(year) == Number(currentYear) && Number(month) < Number(currentMonth))) {
+        expiryDateError = 'La carta è scaduta.';
+    } else {
+        expiryDateError = '';
+    }
+};
+
+    let loading = false;
     const submitForm = () => {
-        // Implement form submission logic here
-        console.log({ name, surname, city, phoneNumber, email, creditCardNumber, expiryDate, cvv });
+        loading = true;
+        setTimeout(() => {
+            shoppingBag.update(bag => {
+                bag = [];
+                return bag;
+            });
+            loading = false;
+            alert('Pagamento effettuato con successo!')
+            goto('/home');
+        }, 2000); // Show the spinner for 2 seconds before redirecting
     };
 
     const formatPhoneNumber = () => {
@@ -46,6 +75,7 @@
     $: name = filterText(name);
     $: surname = filterText(surname);
     $: city = filterText(city);
+    $: expiryDate && validateExpiryDate();
 </script>
 
 <style>
@@ -110,7 +140,7 @@
         background-color: #9CA3AF; /* change this to your desired disabled button color */
         cursor: not-allowed;
     }
-    
+
     .form-input {
         display: block;
         width: 100%;
@@ -158,10 +188,17 @@
     <div class="form-group">
         <label class="form-label" for="expiryDate">Data di Scadenza</label>
         <input class="form-input" type="text" id="expiryDate" placeholder="MM/YY" bind:value={expiryDate} on:input={formatExpiryDate}>
+        {#if expiryDateError}<p>{expiryDateError}</p>{/if}
     </div>
     <div class="form-group">
         <label class="form-label" for="cvv">CVV</label>
         <input class="form-input" type="text" id="cvv" bind:value={cvv} on:input={formatCVV}>
     </div>
-    <button class="submit-btn" on:click={submitForm} disabled={!isFormFilled}>Paga</button>
+    <button class="submit-btn" on:click={submitForm} disabled={!isFormFilled}>
+        {#if loading}
+            <Spinner />
+        {:else}
+            Paga
+        {/if}
+    </button>
 </div>

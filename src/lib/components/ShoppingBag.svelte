@@ -56,10 +56,6 @@
     function compraTutto() {
         loading = true;
         setTimeout(() => {
-            shoppingBag.update(bag => {
-                bag = [];
-                return bag;
-            });
             loading = false;
             goto('/payment');
         }, 2000); // Show the spinner for 2 seconds before redirecting
