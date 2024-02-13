@@ -42,7 +42,7 @@ const validateExpiryDate = () => {
             });
             loading = false;
             alert('Pagamento effettuato con successo!')
-            goto('/home');
+            goto('/ordine');
         }, 2000); // Show the spinner for 2 seconds before redirecting
     };
 
