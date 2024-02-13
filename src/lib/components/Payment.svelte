@@ -41,7 +41,6 @@ const validateExpiryDate = () => {
                 return bag;
             });
             loading = false;
-            alert('Pagamento effettuato con successo!')
             goto('/ordine');
         }, 2000); // Show the spinner for 2 seconds before redirecting
     };
