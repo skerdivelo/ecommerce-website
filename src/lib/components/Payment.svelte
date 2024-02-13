@@ -105,6 +105,12 @@
             background-color: #2563eb;
         }
     }
+
+    .submit-btn:disabled {
+        background-color: #9CA3AF; /* change this to your desired disabled button color */
+        cursor: not-allowed;
+    }
+    
     .form-input {
         display: block;
         width: 100%;
