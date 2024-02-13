@@ -2,6 +2,10 @@
     import { shoppingBag } from "$lib/stores/shoppingBag";
     import Spinner from "./Spinner.svelte";
     import { goto } from "$app/navigation";
+    import visa from '$lib/images/visa.png';
+    import mastercard from '$lib/images/mastercard.png';
+    import amex from '$lib/images/amex.png';
+    import discover from '$lib/images/discover.png';
 
     let name = '';
     let surname = '';
@@ -34,11 +38,11 @@ const validateExpiryDate = () => {
         phoneNumber = phoneNumber.replace(/\D/g, '').slice(0, 10);
     };
 
-    const formatCreditCardNumber = () => {
+/*     const formatCreditCardNumber = () => {
         let formattedNumber = creditCardNumber.replace(/\D/g, '').slice(0, 16);
         formattedNumber = formattedNumber.replace(/(.{4})/g, '$1-');
         creditCardNumber = formattedNumber.endsWith('-') ? formattedNumber.slice(0, -1) : formattedNumber;
-    };
+    }; */
 
     const formatExpiryDate = () => {
         expiryDate = expiryDate.replace(/\D/g, '').slice(0, 4);
@@ -54,6 +58,33 @@ const validateExpiryDate = () => {
     //@ts-ignore
     const filterText = (text) => {
         return text.replace(/\d/g, '');
+    };
+
+    let creditCardType = '';
+
+    const detectCardType = (number: string) => {
+        const cardPatterns = {
+            visa: /^4/,
+            mastercard: /^5[1-5]/,
+            amex: /^3[47]/,
+            discover: /^6(?:011|5[0-9]{2})/,
+            // Aggiungi qui altre carte se necessario
+        };
+
+        for (const [type, pattern] of Object.entries(cardPatterns)) {
+            if (number.match(pattern)) {
+                return type;
+            }
+        }
+
+        return '';
+    };
+
+    const formatCreditCardNumber = () => {
+        let formattedNumber = creditCardNumber.replace(/\D/g, '').slice(0, 16);
+        formattedNumber = formattedNumber.replace(/(.{4})/g, '$1-');
+        creditCardNumber = formattedNumber.endsWith('-') ? formattedNumber.slice(0, -1) : formattedNumber;
+        creditCardType = detectCardType(creditCardNumber);
     };
 
     let loading = false;
@@ -120,6 +151,15 @@ const validateExpiryDate = () => {
         }
     }
 
+    .credit-card-icon {
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        height: calc(100% - 2px); /* sottrai il doppio del bordo del campo di input */
+        width: auto;
+    }
+
     .submit-btn {
         display: block;
         width: 100%;
@@ -182,7 +222,18 @@ const validateExpiryDate = () => {
     </div>
     <div class="form-group">
         <label class="form-label" for="creditCardNumber">Numero di Carta di Credito</label>
-        <input class="form-input" type="text" id="creditCardNumber" bind:value={creditCardNumber} on:input={formatCreditCardNumber}>
+        <div style="position: relative;">
+            <input class="form-input" type="text" id="creditCardNumber" bind:value={creditCardNumber} on:input={formatCreditCardNumber}>
+            {#if creditCardType === 'visa'}
+                <img class="credit-card-icon" src={visa} alt="Visa">
+            {:else if creditCardType === 'mastercard'}
+                <img class="credit-card-icon" src={mastercard} alt="Mastercard">
+            {:else if creditCardType === 'amex'}
+                <img class="credit-card-icon" src={amex} alt="Amex">
+            {:else if creditCardType === 'discover'}
+                <img class="credit-card-icon" src={discover} alt="Discover">
+            {/if}
+        </div>
     </div>
     <div class="form-group">
         <label class="form-label" for="expiryDate">Data di Scadenza</label>
