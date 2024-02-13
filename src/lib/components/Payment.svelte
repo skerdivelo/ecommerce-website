@@ -8,6 +8,10 @@
     let expiryDate = '';
     let cvv = '';
 
+    let isFormFilled = false;
+
+    $: isFormFilled = !!name && !!surname && !!city && !!phoneNumber && !!email && !!creditCardNumber && !!expiryDate && !!cvv;
+
     const submitForm = () => {
         // Implement form submission logic here
         console.log({ name, surname, city, phoneNumber, email, creditCardNumber, expiryDate, cvv });
@@ -153,5 +157,5 @@
         <label class="form-label" for="cvv">CVV</label>
         <input class="form-input" type="text" id="cvv" bind:value={cvv} on:input={formatCVV}>
     </div>
-    <button class="submit-btn" on:click={submitForm}>Invia Pagamento</button>
+    <button class="submit-btn" on:click={submitForm} disabled={!isFormFilled}>Paga</button>
 </div>
