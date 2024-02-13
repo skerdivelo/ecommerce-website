@@ -14,8 +14,6 @@
 
     let isFormFilled = false;
 
-    $: isFormFilled = !!name && !!surname && !!city && !!phoneNumber && !!email && !!creditCardNumber && !!expiryDate && !!cvv && !expiryDateError;
-
     let expiryDateError = '';
 
 const validateExpiryDate = () => {
@@ -31,19 +29,6 @@ const validateExpiryDate = () => {
         expiryDateError = '';
     }
 };
-
-    let loading = false;
-    const submitForm = () => {
-        loading = true;
-        setTimeout(() => {
-            shoppingBag.update(bag => {
-                bag = [];
-                return bag;
-            });
-            loading = false;
-            goto('/ordine');
-        }, 2000); // Show the spinner for 2 seconds before redirecting
-    };
 
     const formatPhoneNumber = () => {
         phoneNumber = phoneNumber.replace(/\D/g, '').slice(0, 10);
@@ -70,6 +55,21 @@ const validateExpiryDate = () => {
     const filterText = (text) => {
         return text.replace(/\d/g, '');
     };
+
+    let loading = false;
+    const submitForm = () => {
+        loading = true;
+        setTimeout(() => {
+            shoppingBag.update(bag => {
+                bag = [];
+                return bag;
+            });
+            loading = false;
+            goto('/ordine');
+        }, 2000); // Show the spinner for 2 seconds before redirecting
+    };
+
+    $: isFormFilled = !!name && !!surname && !!city && !!phoneNumber && !!email && !!creditCardNumber && !!expiryDate && !!cvv && !expiryDateError;
 
     $: name = filterText(name);
     $: surname = filterText(surname);
