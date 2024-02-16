@@ -13,16 +13,16 @@
     </span>
   </div>
   {#each footerSections as section}
-    <div class="flex flex-col gap-5">
-      <span class="font-semibold text-lg"> Products </span>
-      <div class="flex flex-col gap-3">
-        {#each section.links as link}
-          <button class="cursor-pointer w-min whitespace-nowrap">
-            {link.name}
-          </button>
-        {/each}
+      <div class="flex flex-col gap-5">
+        <span class="font-semibold text-lg">{section.title}</span>
+        <div class="flex flex-col gap-3">
+          {#each section.links as link}
+            <button class="cursor-pointer w-min whitespace-nowrap">
+              {link.name}
+            </button>
+          {/each}
+        </div>
       </div>
-    </div>
   {/each}
   <span class="text-fw-darkgrey block sm:hidden">
     © Copyright SkAnd. All rights reserved
