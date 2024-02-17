@@ -2,7 +2,7 @@
     import { onMount } from 'svelte';
     import { goto } from '$app/navigation';
 
-    let countdown = 10;
+    let countdown = 99999;
     const calculateDeliveryDate = () => {
         const date = new Date();
         date.setDate(date.getDate() + 2);
@@ -25,6 +25,8 @@
 <style>
     .container {
         display: flex;
+        position: relative;
+        margin-left: 185px;
         flex-direction: column;
         align-items: center;
         justify-content: center;
