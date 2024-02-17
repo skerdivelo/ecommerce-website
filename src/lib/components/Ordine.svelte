@@ -2,7 +2,7 @@
     import { onMount } from 'svelte';
     import { goto } from '$app/navigation';
 
-    let countdown = 5;
+    let countdown = 10;
     const calculateDeliveryDate = () => {
         const date = new Date();
         date.setDate(date.getDate() + 2);
@@ -33,6 +33,10 @@
         background: #FAFAFA;
         color: #333;
         font-family: 'Helvetica Neue', Arial, sans-serif;
+        text-align: center;
+    }
+
+    .container * {
         text-align: center;
     }
 
