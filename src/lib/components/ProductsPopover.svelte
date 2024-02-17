@@ -10,12 +10,12 @@
 </script>
 
 {#if $shoppingBag.length === 0}
-  <Popover class="bg-white px-20 py-20" {triggeredBy}> <!-- Adjusted padding to be constant -->
+  <Popover class="bg-white px-20 py-20" {triggeredBy}> 
     <img src={cart} alt="Cart" class="w-20 h-20 mx-auto mb-6" />
     <p>Il Carello è vuoto</p>
   </Popover>
 {:else}
-  <Popover class="bg-white px-20 py-20" {triggeredBy} style="position: relative; z-index: 9999;"> <!-- Adjusted padding to be constant -->
+  <Popover class="bg-white px-20 py-20" {triggeredBy} style="position: relative; z-index: 9999;">
     {#each $shoppingBag.slice(0, 3) as product (product.id)}
       <div class="product-detail">
         <img src={product.image} alt={product.name} class="product-image" />
@@ -37,15 +37,15 @@
   display: flex;
   align-items: center;
   padding: 10px;
-  border-bottom: 1px solid #eaeaea; /* Light grey border for each product item */
+  border-bottom: 1px solid #eaeaea; 
 }
 
 .product-image {
-  width: 90px; /* Adjust the size as needed */
-  height: 90px; /* Adjust the size as needed */
+  width: 90px; 
+  height: 90px; 
   object-fit: cover;
-  margin-right: 15px; /* Space between the image and the product info */
-  border-radius: 8px; /* Optional: Rounds the corners of the image */
+  margin-right: 15px; 
+  border-radius: 8px;
 }
 
 .product-info {
@@ -54,10 +54,10 @@
 }
 
 .product-info p {
-  margin: 0; /* Removes default margin from paragraphs */
-  padding: 2px 0; /* Adds a little space between the product name and quantity */
-  font-size: 0.9rem; /* Adjust text size as needed */
-  color: #333; /* Dark grey color for text */
+  margin: 0; 
+  padding: 2px 0;
+  font-size: 0.9rem;
+  color: #333; 
 }
 
 .product-detail:last-child {
@@ -66,7 +66,7 @@
 
 .more-products-indicator {
   text-align: center;
-  font-size: 24px; /* Adjust the size as needed */
-  padding: 10px 0; /* Adjust the padding as needed */
+  font-size: 24px; 
+  padding: 10px 0;
 }
 </style>

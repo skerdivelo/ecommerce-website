@@ -22,8 +22,8 @@
 
 const validateExpiryDate = () => {
     const [month, year] = expiryDate.split('/');
-    const currentYear = new Date().getFullYear() % 100; // Get the last two digits of the current year
-    const currentMonth = new Date().getMonth() + 1; // Get the current month (getMonth is zero-based)
+    const currentYear = new Date().getFullYear() % 100;
+    const currentMonth = new Date().getMonth() + 1;
 
     if (Number(month) < 1 || Number(month) > 12) {
         expiryDateError = 'Il mese deve essere compreso tra 1 e 12.';
@@ -37,12 +37,6 @@ const validateExpiryDate = () => {
     const formatPhoneNumber = () => {
         phoneNumber = phoneNumber.replace(/\D/g, '').slice(0, 10);
     };
-
-/*     const formatCreditCardNumber = () => {
-        let formattedNumber = creditCardNumber.replace(/\D/g, '').slice(0, 16);
-        formattedNumber = formattedNumber.replace(/(.{4})/g, '$1-');
-        creditCardNumber = formattedNumber.endsWith('-') ? formattedNumber.slice(0, -1) : formattedNumber;
-    }; */
 
     const formatExpiryDate = () => {
         expiryDate = expiryDate.replace(/\D/g, '').slice(0, 4);
@@ -68,7 +62,6 @@ const validateExpiryDate = () => {
             mastercard: /^5[1-5]/,
             amex: /^3[47]/,
             discover: /^6(?:011|5[0-9]{2})/,
-            // Aggiungi qui altre carte se necessario
         };
 
         for (const [type, pattern] of Object.entries(cardPatterns)) {
@@ -97,7 +90,7 @@ const validateExpiryDate = () => {
             });
             loading = false;
             goto('/ordine');
-        }, 2000); // Show the spinner for 2 seconds before redirecting
+        }, 2000);
     };
 
     $: isFormFilled = !!name && !!surname && !!city && !!phoneNumber && !!email && !!creditCardNumber && !!expiryDate && !!cvv && !expiryDateError;
@@ -156,7 +149,7 @@ const validateExpiryDate = () => {
         right: 10px;
         top: 50%;
         transform: translateY(-50%);
-        height: calc(100% - 2px); /* sottrai il doppio del bordo del campo di input */
+        height: calc(100% - 2px);
         width: auto;
     }
 
@@ -176,7 +169,7 @@ const validateExpiryDate = () => {
     }
 
     .submit-btn:disabled {
-        background-color: #9CA3AF; /* change this to your desired disabled button color */
+        background-color: #9CA3AF;
         cursor: not-allowed;
     }
 
@@ -186,15 +179,15 @@ const validateExpiryDate = () => {
         padding: 0.75rem;
         border: 2px solid transparent;
         border-radius: 8px;
-        background-color: #f7f7f7; /* change this to your desired input field color */
+        background-color: #f7f7f7; 
         transition: border 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-        color: #333; /* change this to your desired input text color */
+        color: #333;
     }
 
     .form-input:focus {
         outline: none;
-        border: 2px solid #3b82f6; /* change this to your desired input field focus border color */
-        box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2); /* change this to your desired input field focus shadow color */
+        border: 2px solid #3b82f6;
+        box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
     }
 </style>
 

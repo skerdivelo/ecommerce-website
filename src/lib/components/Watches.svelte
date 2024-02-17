@@ -25,8 +25,8 @@
         text-align: center;
         transition: transform 0.3s ease, box-shadow 0.3s ease;
         box-shadow: 0 8px 15px rgba(0,0,0,0.1);
-        background: #ffffff; /* Solid white background */
-        overflow: hidden; /* Ensures nothing overflows the rounded borders */
+        background: #ffffff;
+        overflow: hidden;
     }
 
     .product-card:hover {
@@ -39,11 +39,11 @@
         height: 60%;
         transition: transform 0.3s ease;
         margin-bottom: 2rem;
-        object-fit: cover; /* Ensures the image maintains aspect ratio and covers the container */
+        object-fit: cover;
     }
 
     .product-card:hover img {
-        transform: scale(1.1); /* Slightly enlarges the image on hover */
+        transform: scale(1.1);
     }
 
     .product-card h2 {
@@ -54,7 +54,7 @@
     }
 
     .product-card:hover h2 {
-        color: #007bff; /* Changes the title color on hover for a dynamic effect */
+        color: #007bff;
     }
 
     .product-card p {
@@ -67,7 +67,6 @@
         font-weight: bold;
     }
 
-    /* Responsive Styles */
     @media (max-width: 768px) {
         .products-grid {
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -86,7 +85,7 @@
         <div class="product-card">
             <img src={watch.image} alt={watch.name} />
             <h2>{watch.name}</h2>
-            <p>Sconto: {watch.dicount}</p> <!-- Corrected typo 'dicount' to 'discount' -->
+            <p>Sconto: {watch.dicount}</p>
             <p class="font-light text-fw-darkgrey text-sm line-through">Prezzo: {watch.price}</p>
             <p>Valutazione: <span style="color: orange; font-weight: bold; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">{watch.rating}</span></p> <!-- Makes the watch.rating yellow with shadow -->
         </div>

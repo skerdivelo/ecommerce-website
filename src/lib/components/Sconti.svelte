@@ -25,8 +25,8 @@
         text-align: center;
         transition: transform 0.3s ease, box-shadow 0.3s ease;
         box-shadow: 0 8px 15px rgba(0,0,0,0.1);
-        background: #ffffff; /* Solid white background */
-        overflow: hidden; /* Ensures nothing overflows the rounded borders */
+        background: #ffffff; 
+        overflow: hidden; 
     }
 
     .product-card:hover {
@@ -39,11 +39,11 @@
         height: 60%;
         transition: transform 0.3s ease;
         margin-bottom: 2rem;
-        object-fit: cover; /* Ensures the image maintains aspect ratio and covers the container */
+        object-fit: cover; 
     }
 
     .product-card:hover img {
-        transform: scale(1.1); /* Slightly enlarges the image on hover */
+        transform: scale(1.1); 
     }
 
     .product-card h2 {
@@ -54,7 +54,7 @@
     }
 
     .product-card:hover h2 {
-        color: #007bff; /* Changes the title color on hover for a dynamic effect */
+        color: #007bff; 
     }
 
     .product-card p {
@@ -84,7 +84,6 @@
         }
     }
 
-    /* Responsive Styles */
     @media (max-width: 768px) {
         .products-grid {
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));

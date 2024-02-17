@@ -12,7 +12,6 @@
         products = value;
     });
 
-    // Function to increase the quantity of a product
     function increaseQuantity(product: Product) {
         shoppingBag.update(bag => {
             const productIndex = bag.findIndex(p => p.id === product.id);
@@ -23,7 +22,6 @@
         });
     }
 
-    // Function to remove a product
     function removeProduct(product: Product) {
         shoppingBag.update(bag => {
             const productIndex = bag.findIndex(p => p.id === product.id);
@@ -34,7 +32,6 @@
         });
     }
 
-    // Function to decrease the quantity of a product
     function decreaseQuantity(product: Product) {
         shoppingBag.update(bag => {
             const productIndex = bag.findIndex(p => p.id === product.id);
@@ -46,7 +43,7 @@
                     bag[productIndex].removed = true;
                     setTimeout(() => {
                         removeProduct(product);
-                    }, 2000); // Remove the product after 2 seconds
+                    }, 2000);
                 }
             }
             return [...bag];
@@ -58,10 +55,9 @@
         setTimeout(() => {
             loading = false;
             goto('/payment');
-        }, 2000); // Show the spinner for 2 seconds before redirecting
+        }, 2000);
     }
 
-    // Compute the total price
     $: totalPrice = products.reduce((total, product) => total + (product.price || 0) * (product.quantity || 0), 0);
 </script>
 
@@ -165,7 +161,7 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        height: 80vh; /* Adjust as needed */
+        height: 80vh;
         text-align: center;
     }
 
