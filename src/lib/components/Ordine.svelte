@@ -61,7 +61,7 @@
     <header>
         <h1>Ordine effettuato con successo</h1>
         <h2>Grazie per aver acquistato da noi</h2>
+        <p class="delivery-date">Il tuo ordine sarà consegnato il {deliveryDate}</p>
+        <p>Verrai reindirizzato alla home page in {countdown} secondi...</p>
     </header>
-    <p class="delivery-date">Il tuo ordine sarà consegnato il {deliveryDate}</p>
-    <p>Verrai reindirizzato alla home page in {countdown} secondi...</p>
 </main>

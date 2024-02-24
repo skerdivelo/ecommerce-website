@@ -81,17 +81,25 @@ const validateExpiryDate = () => {
     };
 
     let loading = false;
-    const submitForm = () => {
+    // Nel tuo file Payment.svelte
+    async function submitForm() {
         loading = true;
-        setTimeout(() => {
-            shoppingBag.update(bag => {
-                bag = [];
-                return bag;
-            });
-            loading = false;
-            goto('/ordine');
-        }, 2000);
-    };
+        const user = { name, surname, city, phoneNumber, email };
+        const order = $shoppingBag;
+        const response = await fetch('http://localhost:3000/api/checkout', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ user, order })
+        });
+        const data = await response.text();
+        console.log(data);
+        shoppingBag.update(bag => {
+            bag = [];
+            return bag;
+        });
+        loading = false;
+        goto('/ordine');
+    }
 
     $: isFormFilled = !!name && !!surname && !!city && !!phoneNumber && !!email && !!creditCardNumber && !!expiryDate && !!cvv && !expiryDateError;
 

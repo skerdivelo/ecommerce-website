@@ -18,6 +18,7 @@
   function open() {
     isMenuOpened = true;
   }
+
 </script>
 
 <header>
