@@ -25,43 +25,37 @@
 <style>
     .container {
         display: flex;
-        position: relative;
-        margin-left: 185px;
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        min-height: 100vh;
-        padding: 20px;
-        background: #FAFAFA;
-        color: #333;
-        font-family: 'Helvetica Neue', Arial, sans-serif;
+        height: 100vh;
         text-align: center;
     }
 
-    .container * {
-        text-align: center;
-    }
-
-    h1, h2 {
-        margin: 0.5em 0;
+    .order{
+        font-size: 3rem;
+        margin: 1rem 0;
     }
 
     .delivery-date {
-        margin-top: 20px;
-        font-size: 1.1rem;
-        color: #555;
-        background-color: #EFEFEF;
-        border-radius: 8px;
-        padding: 10px 20px;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        font-size: 1.5rem;
+        margin: 1rem 0;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        padding: 10px;
+    }
+
+    .redirect{
+        font-size: 1.5rem;
+        margin: 1rem 0;
+        margin-bottom: 5rem;
     }
 </style>
 
-<main class="container">
-    <header>
-        <h1>Ordine effettuato con successo</h1>
+<div class="container">
+        <h1 class="order">Ordine effettuato con successo</h1>
         <h2>Grazie per aver acquistato da noi</h2>
-    </header>
-    <p class="delivery-date">Il tuo ordine sarà consegnato il {deliveryDate}</p>
-    <p>Verrai reindirizzato alla home page in {countdown} secondi...</p>
-</main>
+        <p class="delivery-date">Il tuo ordine sarà consegnato il {deliveryDate}</p>
+        <p class="redirect">Verrai reindirizzato alla home page in {countdown} secondi...</p>
+</div>
