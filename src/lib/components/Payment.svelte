@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { shoppingBag } from "$lib/stores/shoppingBag";
+    import { shoppingBag, getShoppingBag } from "$lib/stores/shoppingBag";
     import Spinner from "./Spinner.svelte";
     import { goto } from "$app/navigation";
     import visa from '$lib/images/visa.png';
@@ -81,16 +81,32 @@ const validateExpiryDate = () => {
     };
 
     let loading = false;
-    const submitForm = () => {
+    const submitForm = async () => {
         loading = true;
-        setTimeout(() => {
-            shoppingBag.update(bag => {
-                bag = [];
-                return bag;
-            });
-            loading = false;
-            goto('/ordine');
-        }, 2000);
+        let order;
+        getShoppingBag().subscribe(items => {
+            order = items.map(item => ({ id: item.id, quantity: item.quantity }));
+        });
+        const user = { name, surname, email };
+        const data = { user, order };
+
+        const response = await fetch('http://localhost:3000/api/pagamento', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        });
+
+        if (response.ok) {
+            console.log('Ordine inviato con successo');
+            shoppingBag.update(() => []);
+            goto('/home');
+        } else {
+            console.error('Errore nell\'invio dell\'ordine');
+            alert('Errore nell\'invio dell\'ordine');
+            goto('/home');
+        }
     };
 
     $: isFormFilled = !!name && !!surname && !!city && !!phoneNumber && !!email && !!creditCardNumber && !!expiryDate && !!cvv && !expiryDateError;
