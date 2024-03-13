@@ -99,6 +99,8 @@ const validateExpiryDate = () => {
         shippingDate = new Date(new Date().getTime() + 2 * 24 * 60 * 60 * 1000).toISOString().slice(0, 19).replace('T', ' ');
         const user = { name, surname, email };
         const data = { user, order, totalPrice, timeOfPurchase, dateOfPurchase, shippingDate};
+        console.log(totalPrice);
+        console.table(data);
 
         const response = await fetch('http://localhost:3000/api/pagamento', {
             method: 'POST',
@@ -111,7 +113,10 @@ const validateExpiryDate = () => {
         if (response.ok) {
             console.log('Ordine inviato con successo');
             shoppingBag.update(() => []);
-            goto('/home');
+            setTimeout(() => {
+                loading = false;
+                goto('/ordine');
+            }, 2000);
         } else {
             console.error('Errore nell\'invio dell\'ordine');
             alert('Errore nell\'invio dell\'ordine');

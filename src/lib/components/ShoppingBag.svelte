@@ -246,7 +246,7 @@
             </div>
         {/each}
 
-        <p class="total-price">Prezzo Totale: ${totalPrice}</p>
+        <p class="total-price">Prezzo Totale: ${$totalPrice}</p>
 
         {#if loading}
             <div class="spinner-container">
