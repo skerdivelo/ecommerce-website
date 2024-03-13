@@ -1,5 +1,6 @@
 <script lang="ts">
     import { shoppingBag } from "$lib/stores/shoppingBag";
+    import { totalPrice } from "$lib/stores/totalPrice";
     import { goto } from "$app/navigation";
     import type { Product } from '../../types/Product';
     import cart from "$lib/images/cart.png";
@@ -58,7 +59,10 @@
         }, 2000);
     }
 
-    $: totalPrice = products.reduce((total, product) => total + (product.price || 0) * (product.quantity || 0), 0);
+    $: {
+        totalPrice.set(products.reduce((total, product) => total + (product.price || 0) * (product.quantity || 0), 0));
+    }
+
 </script>
 
 <style>

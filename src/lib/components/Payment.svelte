@@ -80,15 +80,25 @@ const validateExpiryDate = () => {
         creditCardType = detectCardType(creditCardNumber);
     };
 
+    const currentDateTime = new Date();
+    const mysqlDateTime = currentDateTime.toISOString().slice(0, 19).replace('T', ' ');
     let loading = false;
+    let totalPrice = 0;
+    let timeOfPurchase;
+    let dateOfPurchase;
+    let shippingDate; //+2 days from dateOfPurchase
     const submitForm = async () => {
         loading = true;
         let order;
         getShoppingBag().subscribe(items => {
             order = items.map(item => ({ id: item.id, quantity: item.quantity }));
+            totalPrice = items.reduce((total, item) => total + item.price * item.quantity, 0);
         });
+        timeOfPurchase = new Date().toISOString().slice(0, 19).replace('T', ' ');
+        dateOfPurchase = new Date().toISOString().slice(0, 19).replace('T', ' ');
+        shippingDate = new Date(new Date().getTime() + 2 * 24 * 60 * 60 * 1000).toISOString().slice(0, 19).replace('T', ' ');
         const user = { name, surname, email };
-        const data = { user, order };
+        const data = { user, order, totalPrice, timeOfPurchase, dateOfPurchase, shippingDate};
 
         const response = await fetch('http://localhost:3000/api/pagamento', {
             method: 'POST',
