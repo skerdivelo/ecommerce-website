@@ -1,9 +1,10 @@
 <script>
+    import { goto } from '$app/navigation';
     import { onMount } from 'svelte';
     let email = '';
     let password = '';
     async function handleLogin() {
-        const response = await fetch('/api/login', {
+        const response = await fetch('http://localhost:3000/api/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -12,6 +13,7 @@
         });
         const data = await response.text();
         console.log(data);
+        goto('/home');
     }
 </script>
 
@@ -25,5 +27,11 @@
         <label class="form-label block text-gray-600 text-sm font-semibold mb-2" for="password">Password</label>
         <input class="form-input shadow-sm appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="password" id="password" bind:value={password} required>
     </div>
+    <div class="mt-4 mb-4">
+        <a href="/forgot-password" class="text-blue-500 hover:text-blue-600">Forgot your password?</a>
+    </div>
     <button class="submit-btn bg-blue-500 hover:bg-blue-600 text-white font-semibold py-3 px-6 rounded focus:outline-none focus:shadow-outline" on:click={handleLogin}>Login</button>
+    <div class="text-center mt-4">
+        <a href="/register" class="text-blue-500 hover:text-blue-600 text-lg font-semibold underline">Don't have an account yet?</a>
+    </div>
 </div>
